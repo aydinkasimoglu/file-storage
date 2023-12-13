@@ -59,4 +59,9 @@
   ::-webkit-scrollbar-track:hover {
     background-color: hsl(var(--scrollbar-track-hover));
   }
+
+  ::backdrop {
+    @apply backdrop-filter backdrop-blur-sm;
+    backdrop-filter: blur(4px);
+  }
 }
