@@ -63,7 +63,7 @@ export default function FileTable({ id }: ObjectListProps) {
         </svg>
       ) : (
         <>
-          {files && files.length > 0 ? (
+          {files && (
             <div className="py-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-md dark:bg-gray-900">
               <div className="sm:items-center sm:flex">
                 <div className="sm:flex-auto">
@@ -86,52 +86,57 @@ export default function FileTable({ id }: ObjectListProps) {
                   <UploadDialog id={id} />
                 </div>
               </div>
-              <div className="mt-8 flow-root">
-                <div className="mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                    <table className="min-w-full">
-                      <thead>
-                        <tr>
-                          <th
-                            scope="col"
-                            className="py-3 pl-4 pr-3 sm:pl-0 text-gray-900 dark:text-white text-sm font-semibold text-left"
-                          >
-                            Name
-                          </th>
-                          <th
-                            scope="col"
-                            className="py-3 pl-4 pr-3 sm:pl-0 text-gray-900 dark:text-white text-sm font-semibold text-left"
-                          >
-                            Last Modified
-                          </th>
-                          <th
-                            scope="col"
-                            className="py-3 pl-4 pr-3 sm:pl-0 text-gray-900 dark:text-white text-sm font-semibold text-left"
-                          >
-                            Size
-                          </th>
-                          <th scope="col" className="relative py-3 pl-3 pr-4 sm:pr-0">
-                            <span className="sr-only">Delete</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className=" border-gray-700 border-t">
-                        {files.map((file) => (
-                          <FileItem
-                            key={file.name}
-                            name={file.name}
-                            lastModified={file.lastModified}
-                            size={file.size}
-                          />
-                        ))}
-                      </tbody>
-                    </table>
+              {files.length > 0 ? (
+                <div className="mt-8 flow-root">
+                  <div className="mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                      <table className="min-w-full">
+                        <thead>
+                          <tr>
+                            <th
+                              scope="col"
+                              className="py-3 pl-4 pr-3 sm:pl-0 text-gray-900 dark:text-white text-sm font-semibold text-left"
+                            >
+                              Name
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 pl-4 pr-3 sm:pl-0 text-gray-900 dark:text-white text-sm font-semibold text-left"
+                            >
+                              Last Modified
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 pl-4 pr-3 sm:pl-0 text-gray-900 dark:text-white text-sm font-semibold text-left"
+                            >
+                              Size
+                            </th>
+                            <th
+                              scope="col"
+                              className="relative py-3 pl-3 pr-4 sm:pr-0"
+                            >
+                              <span className="sr-only">Delete</span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className=" border-gray-700 border-t">
+                          {files.map((file) => (
+                            <FileItem
+                              key={file.name}
+                              name={file.name}
+                              lastModified={file.lastModified}
+                              size={file.size}
+                            />
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <p className="text-center dark:text-white">No files found.</p>
+              )}
             </div>
-          ) : (
-            <p className="text-center dark:text-white">No files found.</p>
           )}
         </>
       )}
