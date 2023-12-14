@@ -55,7 +55,6 @@ export default function UploadDialog({ id }: { id: string }) {
       setFileUrl(
         `http://file-storage-project-bucket.s3.amazonaws.com/${fileName}`
       );
-      console.log(fileUrl);
       setStatus(Status.SUCCESS);
     } catch (error) {
       console.error(error);
@@ -110,17 +109,7 @@ export default function UploadDialog({ id }: { id: string }) {
                 </div>
               </>
             ) : (
-              <>
-                <p className="text-md">File uploaded successfully!</p>
-                <a
-                  href={fileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-500"
-                >
-                  {fileUrl}
-                </a>
-              </>
+              <p className="text-md">File uploaded successfully!</p>
             )}
           </>
         )}
